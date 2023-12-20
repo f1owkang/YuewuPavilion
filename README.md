@@ -10,8 +10,7 @@ Quartz v4 版本进行了程序重构，专注于用户的可扩展性和易用�
 
 # 构建
 
-[![Build and Test](https://github.com/kslpix/QiyuePavilion/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/kslpix/QiyuePavilion/actions/workflows/ci.yaml)
-[![pages-build-deployment](https://github.com/kslpix/QiyuePavilion/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/kslpix/QiyuePavilion/actions/workflows/pages/pages-build-deployment)
+[![Deploy Quartz site to GitHub Pages](https://github.com/kslpix/QiyuePavilion/actions/workflows/deploy.yaml/badge.svg?branch=main)](https://github.com/kslpix/QiyuePavilion/actions/workflows/deploy.yaml)
 
 # 捐赠
 
