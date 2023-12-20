@@ -1,14 +1,14 @@
 ---
-title: Welcome to Quartz 4
+title: 欢迎来到 Quartz 4
 ---
 
-Quartz is a fast, batteries-included static-site generator that transforms Markdown content into fully functional websites. Thousands of students, developers, and teachers are [[showcase|already using Quartz]] to publish personal notes, websites, and [digital gardens](https://jzhao.xyz/posts/networked-thought) to the web.
+Quartz是一个快速、内置电池的静态站点生成器，将Markdown内容转换为完全功能的网站。成千上万的学生、开发者和教师已经在使用Quartz，发布个人笔记、网站和[数字花园](https://jzhao.xyz/posts/networked-thought)到网络上。
 
-## 🪴 Get Started
+## 🪴 入门
 
-Quartz requires **at least [Node](https://nodejs.org/) v18.14** and `npm` v9.3.1 to function correctly. Ensure you have this installed on your machine before continuing.
+Quartz要求**至少安装 [Node](https://nodejs.org/) v18.14** 和 `npm` v9.3.1 以正确运行。在继续之前，请确保在您的计算机上安装了这些。
 
-Then, in your terminal of choice, enter the following commands line by line:
+然后，在您选择的终端中，逐行输入以下命令：
 
 ```shell
 git clone https://github.com/jackyzha0/quartz.git
@@ -17,7 +17,7 @@ npm i
 npx quartz create
 ```
 
-This will guide you through initializing your Quartz with content. Once you've done so, see how to:
+这将引导您初始化Quartz并添加内容。完成后，查看如何：
 
 1. [[authoring content|Writing content]] in Quartz
 2. [[configuration|Configure]] Quartz's behaviour
