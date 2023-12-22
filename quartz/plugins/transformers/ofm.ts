@@ -70,6 +70,13 @@ const callouts = {
   quote: icons.quoteIcon,
 }
 
+const replacementMapping = {
+  'Tip': '提示',
+  'Hint': '提示',
+  'Note': '笔记'
+  // 添加更多的替换规则
+};
+
 const calloutMapping: Record<string, keyof typeof callouts> = {
   note: "note",
   abstract: "abstract",
@@ -77,7 +84,7 @@ const calloutMapping: Record<string, keyof typeof callouts> = {
   tldr: "abstract",
   info: "info",
   todo: "todo",
-  tip: "提示",
+  tip: "tip",
   hint: "tip",
   important: "tip",
   success: "success",
@@ -238,9 +245,8 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options> 
                     return {
                       type: "html",
                       data: { hProperties: { transclude: true } },
-                      value: `<blockquote class="transclude" data-url="${url}" data-block="${block}"><a href="${
-                        url + anchor
-                      }" class="transclude-inner">Transclude of ${url}${block}</a></blockquote>`,
+                      value: `<blockquote class="transclude" data-url="${url}" data-block="${block}"><a href="${url + anchor
+                        }" class="transclude-inner">Transclude of ${url}${block}</a></blockquote>`,
                     }
                   }
 
@@ -381,6 +387,12 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options> 
                   type: "paragraph",
                   children: [{ type: "text", value: titleContent + " " }, ...restChildren],
                 }
+                
+                // 根据映射表进行替换
+                Object.entries(replacementMapping).forEach(([original, replacement]) => {
+                  titleNode.children[0].value = titleNode.children[0].value.replace(new RegExp(`\\b${original}\\b`, 'g'), replacement);
+                });
+
                 const title = mdastToHtml(titleNode)
 
                 const toggleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold">
@@ -418,9 +430,8 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options> 
                 node.data = {
                   hProperties: {
                     ...(node.data?.hProperties ?? {}),
-                    className: `callout ${collapse ? "is-collapsible" : ""} ${
-                      defaultState === "collapsed" ? "is-collapsed" : ""
-                    }`,
+                    className: `callout ${collapse ? "is-collapsible" : ""} ${defaultState === "collapsed" ? "is-collapsed" : ""
+                      }`,
                     "data-callout": calloutType,
                     "data-callout-fold": collapse,
                   },
