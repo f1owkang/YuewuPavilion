@@ -25,12 +25,14 @@ Quartz v4 版本进行了程序重构，专注于用户的可扩展性和易用�
 | GIT_USER_NAME | 用于存储 user.name | GithubAction |
 
 3. 在克隆的项目中找到Github Pages，Source选择Github Action。
-4. （可选）Custom domain中填写你的自定义域名，将注册域名托管到Cloudflare，在Cloudflare中填写如下解析。
+4. （二选一）（可选）Custom domain中填写你的自定义域名，将注册域名托管到Cloudflare，在Cloudflare中填写如下解析。
 
 | 类型 | 名称 | 内容 |
 | :---: | :---: | :---: |
 | CNAME | * | Github用户名.github.io |
 | CNAME | @ | Github用户名.github.io |
+
+5. （二选一）（可选）不使用Cloudflare，直接将域名解析至 *Github用户名.github.io* 即可，此方法在国内可能造成访问困难。
 
 部署成功，等待一段时间，你就可以访问你的项目地址了！
 
