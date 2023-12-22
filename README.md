@@ -17,7 +17,13 @@ Quartz v4 版本进行了程序重构，专注于用户的可扩展性和易用�
 | Github账号 | 可以进行Github Action的账号 | 必需 |
 
 1. 克隆本项目到自己的Github账号。
-2. 启用克隆项目的Github Action。
+2. 启用克隆项目的Github Action，配置环境Secrets。
+
+| 名称 | 备注 | 示例 |
+| :---: | :---: | :---: |
+| GIT_USER_EMAIL | 用于存储 user.email | yuewuwork@outlook.com |
+| GIT_USER_NAME | 用于存储 user.name | GithubAction |
+
 3. 在克隆的项目中找到Github Pages，Source选择Github Action。
 4. （可选）Custom domain中填写你的自定义域名，将注册域名托管到Cloudflare，在Cloudflare中填写如下解析。
 
