@@ -1,21 +1,35 @@
 name: Deploy Quartz site to GitHub Pages
- 
+
 on:
   push:
     branches:
       - main
- 
+
 permissions:
   contents: read
   pages: write
   id-token: write
- 
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
- 
+
 jobs:
-  build:
+  update-submodules:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Update Submodules
+        run: |
+          git submodule update --remote --merge
+          git add .
+          git commit -m "Update submodules"
+          git push
+
+  build-pages:
+    needs: update-submodules  # 添加依赖关系
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -32,9 +46,9 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: public
- 
-  deploy:
-    needs: build
+
+  deploy-pages:
+    needs: build-pages  
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
