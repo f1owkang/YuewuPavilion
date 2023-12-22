@@ -70,12 +70,12 @@ const callouts = {
   quote: icons.quoteIcon,
 }
 
-const replacementMapping = {
-  'Tip': '提示',
-  'Hint': '提示',
-  'Note': '笔记'
-  // 添加更多的替换规则
-};
+// const replacementMapping = {
+//   'Tip': '提示',
+//   'Hint': '提示',
+//   'Note': '笔记'
+//   // 添加更多的替换规则
+// };
 
 const calloutMapping: Record<string, keyof typeof callouts> = {
   note: "note",
@@ -387,11 +387,11 @@ export const ObsidianFlavoredMarkdown: QuartzTransformerPlugin<Partial<Options> 
                   type: "paragraph",
                   children: [{ type: "text", value: titleContent + " " }, ...restChildren],
                 }
-                
+
                 // 根据映射表进行替换
-                Object.entries(replacementMapping).forEach(([original, replacement]) => {
-                  titleNode.children[0].value = titleNode.children[0].value.replace(new RegExp(`\\b${original}\\b`, 'g'), replacement);
-                });
+                // Object.entries(replacementMapping).forEach(([original, replacement]) => {
+                //   titleNode.children[0].value = titleNode.children[0].value.replace(new RegExp(`\\b${original}\\b`, 'g'), replacement);
+                // });
 
                 const title = mdastToHtml(titleNode)
 
