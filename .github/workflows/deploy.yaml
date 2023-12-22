@@ -29,10 +29,14 @@ jobs:
 
       - name: Update Submodules
         run: |
-          git submodule update --remote --merge
-          git add .
-          git commit -m "Update submodules"
-          git push
+          git submodule update --remote --merge || true
+          if [[ -n $(git status -s) ]]; then
+            git add .
+            git commit -m "Auto: Update submodules"
+            git push
+          else
+            echo "No changes in submodules."
+          fi
 
   build-pages:
     needs: update-submodules  # 添加依赖关系
@@ -51,7 +55,7 @@ jobs:
 
       - name: Build Quartz
         run: npx quartz build
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
