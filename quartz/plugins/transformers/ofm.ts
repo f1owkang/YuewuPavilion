@@ -77,7 +77,7 @@ const calloutMapping: Record<string, keyof typeof callouts> = {
   tldr: "abstract",
   info: "info",
   todo: "todo",
-  tip: "tip",
+  tip: "提示",
   hint: "tip",
   important: "tip",
   success: "success",
