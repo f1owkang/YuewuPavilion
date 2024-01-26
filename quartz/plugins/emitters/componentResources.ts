@@ -13,6 +13,7 @@ import { QuartzComponent } from "../../components/types"
 import { googleFontHref, joinStyles } from "../../util/theme"
 import { Features, transform } from "lightningcss"
 import { transform as transpile } from "esbuild"
+import { write } from "./helpers"
 
 type ComponentResources = {
   css: string[]
@@ -168,7 +169,7 @@ export const ComponentResources: QuartzEmitterPlugin<Options> = (opts?: Partial<
     getQuartzComponents() {
       return []
     },
-    async emit(ctx, _content, resources, emit): Promise<FilePath[]> {
+    async emit(ctx, _content, resources): Promise<FilePath[]> {
       // component specific scripts and styles
       const componentResources = getComponentResources(ctx)
       // important that this goes *after* component scripts
@@ -190,7 +191,8 @@ export const ComponentResources: QuartzEmitterPlugin<Options> = (opts?: Partial<
       ])
 
       const fps = await Promise.all([
-        emit({
+        write({
+          ctx,
           slug: "index" as FullSlug,
           ext: ".css",
           content: transform({
@@ -207,12 +209,14 @@ export const ComponentResources: QuartzEmitterPlugin<Options> = (opts?: Partial<
             include: Features.MediaQueries,
           }).code.toString(),
         }),
-        emit({
+        write({
+          ctx,
           slug: "prescript" as FullSlug,
           ext: ".js",
           content: prescript,
         }),
-        emit({
+        write({
+          ctx,
           slug: "postscript" as FullSlug,
           ext: ".js",
           content: postscript,

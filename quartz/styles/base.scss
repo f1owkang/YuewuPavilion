@@ -59,7 +59,6 @@ a {
   text-decoration: none;
   transition: color 0.2s ease;
   color: var(--secondary);
-  display: inline-block;
 
   &:hover {
     color: var(--tertiary) !important;
@@ -70,6 +69,7 @@ a {
     background-color: var(--highlight);
     padding: 0 0.1rem;
     border-radius: 5px;
+    line-height: 1.4rem;
 
     &:has(> img) {
       background-color: none;
@@ -79,7 +79,6 @@ a {
   }
   
   &.external .external-icon {
-    vertical-align: bottom;
     height: 1ex;
     margin: 0 0.15em;
 
@@ -357,6 +356,7 @@ pre {
     counter-increment: line 0;
     display: grid;
     padding: 0.5rem 0;
+    overflow-x: scroll;
 
     & [data-highlighted-chars] {
       background-color: var(--highlight);
